@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@commitlint/cli': ^16.2.4
+  '@commitlint/config-conventional': ^16.2.4
   '@types/node': ^17.0.30
   '@types/react': ^18.0.0
   '@types/react-dom': ^18.0.0
@@ -32,6 +33,7 @@ dependencies:
 
 devDependencies:
   '@commitlint/cli': registry.npmmirror.com/@commitlint/cli/16.2.4
+  '@commitlint/config-conventional': registry.npmmirror.com/@commitlint/config-conventional/16.2.4
   '@types/node': registry.npmmirror.com/@types/node/17.0.30
   '@types/react': registry.npmmirror.com/@types/react/18.0.8
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.3
@@ -398,6 +400,15 @@ packages:
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
+    dev: true
+
+  registry.npmmirror.com/@commitlint/config-conventional/16.2.4:
+    resolution: {integrity: sha512-av2UQJa3CuE5P0dzxj/o/B9XVALqYzEViHrMXtDrW9iuflrqCStWBAioijppj9URyz6ONpohJKAtSdgAOE0gkA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@commitlint/config-conventional/-/config-conventional-16.2.4.tgz}
+    name: '@commitlint/config-conventional'
+    version: 16.2.4
+    engines: {node: '>=v12'}
+    dependencies:
+      conventional-changelog-conventionalcommits: registry.npmmirror.com/conventional-changelog-conventionalcommits/4.6.1
     dev: true
 
   registry.npmmirror.com/@commitlint/config-validator/16.2.1:
