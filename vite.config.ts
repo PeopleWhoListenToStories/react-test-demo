@@ -1,16 +1,15 @@
-import { defineConfig, UserConfig, UserConfigExport } from 'vite'
-import react from '@vitejs/plugin-react'
-import { resolve } from 'path'
+import { defineConfig, loadEnv, UserConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig((command: UserConfig, mode: any): UserConfigExport => {
-  console.log(`%c 💆‍♀️ 🚀 : mode `, `font-size:14px;background-color:#d20f1b;color:white;`, mode)
-  console.log(`%c 💆‍♀️ 🚀 : command `, `font-size:14px;background-color:#d26b5f;color:white;`, command)
-  const isDev = command.mode === 'development'
+export default defineConfig(({ mode }: UserConfig) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
+  const isDev = process.env.NODE_ENV === 'development';
   const defaultSettings = {
     root: process.cwd(),
-    base: '/',
-    mode: command.mode, // 模式
+    base: process.env.VITE_APP_BASE,
+    mode: mode, // 模式
     publicDir: '/',
     clearScreen: true, // Vite在记录某些消息时清除终端屏幕
     plugins: [react()],
@@ -34,22 +33,22 @@ export default defineConfig((command: UserConfig, mode: any): UserConfigExport =
       }
     },
     server: {
-      host: '127.0.0.1',
+      host: '0.0.0.0',
       port: 1998,
       strictPort: true, // 如果端口已在使用中，则设置为退出，而不是自动尝试下一个可用端口
       open: true,
       proxy: {
-        '/api': {
-          target: 'http://jsonplaceholder.typicode.com',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/api/, '')
-        },
+        // '/api': {
+        //   target: 'http://jsonplaceholder.typicode.com',
+        //   changeOrigin: true,
+        //   rewrite: path => path.replace(/^\/api/, '')
+        // },
         // with RegEx
-        '^/fallback/.*': {
-          target: 'http://jsonplaceholder.typicode.com',
-          changeOrigin: true,
-          rewrite: path => path.replace(/^\/fallback/, '')
-        },
+        // '^/fallback/.*': {
+        //   target: 'http://jsonplaceholder.typicode.com',
+        //   changeOrigin: true,
+        //   rewrite: path => path.replace(/^\/fallback/, '')
+        // },
         // Using the proxy instance
         // '/api': {
         //   target: 'http://jsonplaceholder.typicode.com',
@@ -59,14 +58,14 @@ export default defineConfig((command: UserConfig, mode: any): UserConfigExport =
         //   }
         // },
         // Proxying websockets or socket.io
-        '/socket.io': {
-          target: 'ws://localhost:3000',
-          ws: true
-        }
+        // '/socket.io': {
+        //   target: 'ws://localhost:3000',
+        //   ws: true
+        // }
       }
     },
     build: {
-      outDir: 'dist',
+      outDir: process.env.VITE_APP_DIR,
       assetsDir: 'static',
       assetsInlineLimit: 4096, //小于此阈值的导入或引用资产将被内联为 base64 URL，以避免额外的 http 请求。设置为0完全禁用内联
       cssCodeSplit: true, // 启用 CSS 代码拆分
@@ -92,8 +91,8 @@ export default defineConfig((command: UserConfig, mode: any): UserConfigExport =
     preview: {
       port: 8080
     }
-  }
+  };
   return {
     ...defaultSettings
-  }
-})
+  };
+});

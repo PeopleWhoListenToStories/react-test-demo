@@ -5,11 +5,15 @@ module.exports = {
     node: true
   },
   extends: [
-    'prettier',
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:@typescript-eslint/recommended'
+    // 'prettier',
+    // 'eslint:recommended',
+    // 'plugin:react/recommended',
+    // 'plugin:react/jsx-runtime',
+    // 'plugin:@typescript-eslint/recommended'
+    'plugin:react/recommended', // 使用来自 @eslint-plugin-react 的推荐规则
+    'plugin:@typescript-eslint/recommended', // 使用来自@typescript-eslint/eslint-plugin的推荐规则
+    'prettier', // 使用 ESLint -config-prettier 禁用来自@typescript-eslint/ ESLint 与 prettier 冲突的 ESLint 规则
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -35,5 +39,11 @@ module.exports = {
       { props: true, ignorePropertyModificationsFor: ['draft'] }
     ],
     'react/no-this-in-sfc': 0
+  },
+
+  settings: {
+    react: {
+      version: 'detect'
+    }
   }
 };
