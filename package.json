@@ -22,7 +22,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "craco eject"
+    "eject": "craco eject",
+    "docker-build-dev": "docker build -f ./docker/dev/Dockerfile -t fe-react-test-demo ."
   },
   "eslintConfig": {
     "extends": [
