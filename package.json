@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "set GENERATE_SOURCEMAP=false && craco build",
     "test": "craco test",
     "eject": "craco eject",
     "docker-build-dev": "docker build -f ./docker/dev/Dockerfile -t fe-react-test-demo ."

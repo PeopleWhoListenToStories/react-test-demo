@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-COPY build /app/build
+COPY react-test-demo-dist /app/react-test-demo-dist
 COPY ./docker/dev/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80

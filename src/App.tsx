@@ -10,15 +10,19 @@ function App() {
   }>({})
   const [str, setStr] = useState('')
   const handleClickTest = useCallback(async () => {
-    const { code, data } = await fetch('/api/v1')
-      .then(res => res)
-      .then(res => res.json())
-    if (code === 200) {
-      // setTestVal(data)
-      setStr(data)
-    } else {
-      setTestVal({})
-      setStr('')
+    try {
+      const { code, data } = await fetch('/api/v1')
+        .then(res => res)
+        .then(res => res.json())
+      if (code === 200) {
+        setTestVal(data)
+        setStr(data)
+      } else {
+        setTestVal({})
+        setStr('')
+      }
+    } catch (err) {
+      setStr('request error...')
     }
   }, [])
   return (
@@ -31,7 +35,7 @@ function App() {
         <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
           Learn React
         </a>
-        <span onClick={handleClickTest}>测试{str}</span>
+        <span onClick={handleClickTest}>测试{str} {JSON.stringify(testVal)}</span>
       </header>
     </div>
   )
