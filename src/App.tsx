@@ -33,7 +33,7 @@ function App() {
         <b onClick={handleClickTest}>hi，i'm xulai</b>
       </div>
       <div style={{ textAlign: 'center'}} dangerouslySetInnerHTML={{ __html:str }}></div><br/>
-      <div>{JSON.stringify(testVal)}</div>
+      {/* <div>{JSON.stringify(testVal)}</div> */}
     </div>
   )
 }
