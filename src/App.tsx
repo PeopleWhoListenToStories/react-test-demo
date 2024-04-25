@@ -11,7 +11,7 @@ function App() {
   const [str, setStr] = useState('')
   const handleClickTest = useCallback(async () => {
     try {
-      const { code, data } = await fetch('/api/v1')
+      const { code, data } = await fetch('/api')
         .then(res => res)
         .then(res => res.json())
       if (code === 200) {
