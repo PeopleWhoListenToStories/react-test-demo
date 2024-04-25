@@ -16,6 +16,7 @@ function App() {
       if (code === 200) {
         setTestVal(data)
         setStr(data)
+        console.log(testVal)
       } else {
         setTestVal({})
         setStr('')
