@@ -2,11 +2,11 @@ import React, { useCallback, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [testVal, setTestVal] = useState<{
-    name?: string
-    createDateTime?: number
-    upDateTime?: number
-  }>({})
+  // const [testVal, setTestVal] = useState<{
+  //   name?: string
+  //   createDateTime?: number
+  //   upDateTime?: number
+  // }>({})
   const [str, setStr] = useState('')
   const handleClickTest = useCallback(async () => {
     try {
@@ -14,11 +14,10 @@ function App() {
         .then(res => res)
         .then(res => res.json())
       if (code === 200) {
-        setTestVal(data)
+        // setTestVal(data)
         setStr(data)
-        console.log(testVal)
       } else {
-        setTestVal({})
+        // setTestVal({})
         setStr('')
       }
     } catch (err) {
